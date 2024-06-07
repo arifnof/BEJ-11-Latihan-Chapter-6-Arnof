@@ -9,13 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Like.belongsTo(models.User, { 
+      Post.belongsTo(models.User, { 
         foreignKey: "userId",
         as: "user"
       })
     }
   }
-  Item.init(
+  Post.init(
     {
       user_id: DataTypes.INTEGER,
       description: DataTypes.TEXT,

@@ -1,8 +1,7 @@
 const express = require("express")
 const authRoutes = require("./authRoutes")
 const userRoutes = require("./userRoutes")
-const itemRoutes = require("./itemRoutes")
-const orderRoutes = require("./orderRoutes")
+const postRoutes = require("./postRoutes")
 
 const router = express.Router()
 
@@ -14,8 +13,7 @@ router.get("/", (req, res) => {
 
 router.use("/", authRoutes)
 router.use("/user", userRoutes)
-router.use("/item", itemRoutes)
-router.use("/order", orderRoutes)
+router.use("/post", postRoutes)
 
 router.use((req, res, next) => {
   res.helper.notFound()
