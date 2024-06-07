@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
       full_name: DataTypes.STRING,
       bio: DataTypes.STRING,
-      phoneNumber: DataTypes.STRING,
+      phone_number: DataTypes.STRING,
       is_verified: DataTypes.STRING,
       is_premium: DataTypes.STRING,
       created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },

@@ -18,13 +18,13 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
       },
-      fullName: {
+      full_name: {
         type: Sequelize.STRING,
       },
       bio: {
         type: Sequelize.STRING,
       },
-      phoneNumber: {
+      phone_number: {
         type: Sequelize.STRING,
       },
       is_verified: {
