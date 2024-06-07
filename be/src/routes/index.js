@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get("/", (req, res) => {
   res.status(200).json({
-    message: "Welcome to the BingleShop API",
+    message: "Welcome to the Instaglam API",
   })
 })
 
