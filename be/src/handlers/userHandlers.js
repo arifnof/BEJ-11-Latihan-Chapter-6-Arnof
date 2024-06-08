@@ -47,6 +47,17 @@ const getById = async (req, res) => {
   }
 }
 
+const getPost = async (req, res) => {
+  try {
+    const id = req.params.id
+    const user = await userServices.getPost(id)
+    res.helper.success(user, "User")
+  } catch (error) {
+    throw error
+    // res.helper.error(error.message, "Error getting data")
+  }
+}
+
 const destroy = async (req, res) => {
   try {
     const id = req.params.id
@@ -58,4 +69,4 @@ const destroy = async (req, res) => {
   }
 }
 
-module.exports = { create, update, get, getById, destroy }
+module.exports = { create, update, get, getById, getPost, destroy }

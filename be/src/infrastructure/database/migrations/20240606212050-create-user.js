@@ -44,8 +44,33 @@ module.exports = {
         defaultValue: Sequelize.fn("NOW"),
       },
     })
+    await queryInterface.createTable("followers", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+      },
+      follower_id: {
+        type: Sequelize.INTEGER,
+      },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+    })
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("users")
+    await queryInterface.dropTable("followers")
   },
 }

@@ -1,7 +1,7 @@
 const express = require("express")
 const bcrypt = require("bcryptjs")
 
-const { User, Follower } = require("../infrastructure/database/models")
+const { User, Follower, Post } = require("../infrastructure/database/models")
 
 module.exports = {
   get: async () => {
@@ -28,7 +28,28 @@ module.exports = {
                 'updated_at',
                 'deleted_at'
             ]
-        }})
+        },
+        // include: [
+        //   {
+        //     model: Post,
+        //     as: "post",
+        //     required: true,
+        //     attributes: {
+        //       exclude: ["updated_at", "deleted_at"],
+        //     },
+        //   },
+        // ],
+        // include: [
+        //   {
+        //     model: Follower,
+        //     as: "follower",
+        //     required: true,
+        //     attributes: {
+        //       exclude: ["updated_at", "deleted_at"],
+        //     },
+        //   },
+        // ],
+      })
       return user
     } catch (error) {
       throw error

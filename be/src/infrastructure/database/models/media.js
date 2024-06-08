@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // Media.belongsTo(models.Post, {
-      //   foreignKey: 'post_id',
-      //   as: 'post'
-      // })
+      Media.belongsTo(models.Post, {
+        foreignKey: 'post_id',
+        as: 'post'
+      })
     }
   }
   Media.init(
