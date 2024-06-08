@@ -2,6 +2,7 @@ const express = require("express")
 const authRoutes = require("./authRoutes")
 const userRoutes = require("./userRoutes")
 const postRoutes = require("./postRoutes")
+const feedRoutes = require("./feedRoutes")
 
 const router = express.Router()
 
@@ -14,6 +15,7 @@ router.get("/", (req, res) => {
 router.use("/", authRoutes)
 router.use("/user", userRoutes)
 router.use("/post", postRoutes)
+router.use("/feed", feedRoutes)
 
 router.use((req, res, next) => {
   res.helper.notFound()

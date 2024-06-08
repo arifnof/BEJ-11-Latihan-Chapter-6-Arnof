@@ -109,4 +109,15 @@ const destroyMedia = async (req, res) => {
   }
 }
 
-module.exports = { create, update, get, getById, destroy, updateLike, getMedia, createMedia, destroyMedia }
+const getFeed = async (req, res) => {
+  try {
+    const userId = req.userId
+    const post = await postServices.getFeed(userId)
+    res.helper.success(post, "User Feed")
+  } catch (error) {
+    throw error
+    // res.helper.error(error.message, "Error getting data")
+  }
+}
+
+module.exports = { create, update, get, getById, destroy, updateLike, getMedia, createMedia, destroyMedia, getFeed }

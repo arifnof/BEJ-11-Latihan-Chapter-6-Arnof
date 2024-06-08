@@ -69,6 +69,37 @@ module.exports = {
       throw error
     }
   },
+  getFeed: async (userId) => {
+    try {
+      const feeds = await Post.findAll({
+        where: { user_id: userId },
+        include: [
+          {
+            model: User,
+            as: "user",
+            required: true,
+            attributes: {
+              exclude: ["password", "updated_at", "deleted_at"],
+            },
+          },
+          {
+            model: Media,
+            as: "media",
+            required: true,
+            attributes: {
+              exclude: ["updated_at", "deleted_at"],
+            },
+          },
+        ],
+        attributes: {
+          exclude: ["user_id", "updated_at", "deleted_at"],
+        },
+      })
+      return feeds
+    } catch (error) {
+      throw error
+    }
+  },
   /*
   create: async (postData) => {
     try {
