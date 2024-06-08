@@ -47,10 +47,10 @@ const getById = async (req, res) => {
   }
 }
 
-const getPost = async (req, res) => {
+const getFollowerById = async (req, res) => {
   try {
     const id = req.params.id
-    const user = await userServices.getPost(id)
+    const user = await userServices.getFollowerById(id)
     res.helper.success(user, "User")
   } catch (error) {
     throw error
@@ -69,4 +69,4 @@ const destroy = async (req, res) => {
   }
 }
 
-module.exports = { create, update, get, getById, getPost, destroy }
+module.exports = { create, update, get, getById, getFollowerById, destroy }

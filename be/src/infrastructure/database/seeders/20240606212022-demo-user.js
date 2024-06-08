@@ -20,8 +20,18 @@ module.exports = {
           username: "usertest",
           email: "usertest@email.com",
           password: await bcrypt.hash("jakarta@24", 10),
-          bio: "standard account",
-          full_name: "Standard Account Testing",
+          bio: "standard account 1",
+          full_name: "Standard Account 1 Testing",
+          is_verified: true,
+          is_premium: false,
+          phone_number: "+6281390909090",
+        },
+        {
+          username: "usertest2",
+          email: "usertest2@email.com",
+          password: await bcrypt.hash("jakarta@24", 10),
+          bio: "standard account 2",
+          full_name: "Standard Account 2 Testing",
           is_verified: true,
           is_premium: false,
           phone_number: "+6281390909090",
@@ -32,6 +42,10 @@ module.exports = {
         {
           user_id: 1,
           follower_id: 2,
+        },
+        {
+          user_id: 1,
+          follower_id: 3,
         },
       ],{}
     )

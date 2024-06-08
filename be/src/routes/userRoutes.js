@@ -7,6 +7,7 @@ router.use(authMiddleware)
 
 router.get("/", userHandlers.get)
 router.get("/:id", userHandlers.getById)
+router.get("/:id/follower", userHandlers.getFollowerById)
 router.post("/", userHandlers.create)
 router.put("/:id", userHandlers.update)
 router.delete("/:id", userHandlers.destroy)

@@ -29,28 +29,30 @@ module.exports = {
                 'deleted_at'
             ]
         },
-        // include: [
-        //   {
-        //     model: Post,
-        //     as: "post",
-        //     required: true,
-        //     attributes: {
-        //       exclude: ["updated_at", "deleted_at"],
-        //     },
-        //   },
-        // ],
-        // include: [
-        //   {
-        //     model: Follower,
-        //     as: "follower",
-        //     required: true,
-        //     attributes: {
-        //       exclude: ["updated_at", "deleted_at"],
-        //     },
-        //   },
-        // ],
       })
       return user
+    } catch (error) {
+      throw error
+    }
+  },
+  getFollowerById: async (id) => {
+    try {
+      const followers = await Follower.findAll({
+        where: { user_id : id },
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: {
+              exclude: [
+                'password',
+                'updated_at',
+                'deleted_at'
+            ]}
+          },
+        ],
+      });
+      return followers
     } catch (error) {
       throw error
     }
