@@ -38,7 +38,6 @@ module.exports = {
       throw error
     }
   },
-  /*
   getById: async (id) => {
     try {
       const post = await Post.findOne({
@@ -55,7 +54,7 @@ module.exports = {
           {
             model: Media,
             as: "media",
-            // required: true,
+            required: true,
             attributes: {
               exclude: ["updated_at", "deleted_at"],
             },
@@ -70,6 +69,7 @@ module.exports = {
       throw error
     }
   },
+  /*
   create: async (postData) => {
     try {
       let data = await Post.create(postData)
