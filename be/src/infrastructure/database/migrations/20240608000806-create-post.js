@@ -26,7 +26,7 @@ module.exports = {
         defaultValue: Sequelize.fn("NOW"),
       },
     })
-    await queryInterface.createTable("media", {
+    await queryInterface.createTable("medias", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -59,6 +59,6 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("posts")
-    await queryInterface.dropTable("media")
+    await queryInterface.dropTable("medias")
   },
 }

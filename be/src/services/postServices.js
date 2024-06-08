@@ -4,7 +4,7 @@ const {
   Post,
   Media,
   User,
-  sequelize
+  sequelize,
 } = require("../infrastructure/database/models")
 
 module.exports = {
@@ -14,40 +14,53 @@ module.exports = {
         attributes: {
           exclude: ["user_id", "updated_at", "deleted_at"],
         },
-        include: {
-          model: User,
-          as: "user",
-          required: true,
-          attributes: {
-            exclude: ["password", "updated_at", "deleted_at"],
+        include: [
+          {
+            model: User,
+            as: "user",
+            required: true,
+            attributes: {
+              exclude: ["password", "updated_at", "deleted_at"],
+            },
           },
-        },
+          // {
+          //   model: Media,
+          //   as: "media",
+          //   required: true,
+          //   attributes: {
+          //     exclude: ["updated_at", "deleted_at"],
+          //   },
+          // },
+        ],
       })
       return posts
     } catch (error) {
       throw error
     }
   },
+  /*
   getById: async (id) => {
     try {
       const post = await Post.findOne({
         where: { id },
-        include: [{
-          model: User,
-          as: "user",
-          required: true,
-          attributes: {
-            exclude: ["password", "updated_at", "deleted_at"],
+        include: [
+          {
+            model: User,
+            as: "user",
+            required: true,
+            attributes: {
+              exclude: ["password", "updated_at", "deleted_at"],
+            },
           },
-        },
-        {
-          model: Media,
-          as: "media",
-          // required: true,
-          attributes: {
-            exclude: ["post_id", "updated_at", "deleted_at"],
+          {
+            model: Media,
+            as: "media",
+            // required: true,
+            attributes: {
+              exclude: ["updated_at", "deleted_at"],
+            },
           },
-        }],
+        ],
         attributes: {
           exclude: ["user_id", "updated_at", "deleted_at"],
         },
@@ -103,9 +116,12 @@ module.exports = {
     }
   },
   createMedia: async (post_id, postMediaData) => {
-    const transaction = await sequelize.transaction();
+    const transaction = await sequelize.transaction()
     try {
-      let media = await Media.findOne({ where : { id: postMediaData.mediaId } }, { transaction })
+      let media = await Media.findOne(
+        { where: { id: postMediaData.mediaId } },
+        { transaction }
+      )
       if (!media) {
         throw new Error("Media not found")
       }
@@ -119,7 +135,7 @@ module.exports = {
     }
   },
   destroyMedia: async (post_id, id) => {
-    const transaction = await sequelize.transaction();
+    const transaction = await sequelize.transaction()
     try {
       let data = await Media.destroy({ where: { id, post_id } })
       await transaction.commit()
@@ -129,4 +145,5 @@ module.exports = {
       throw error
     }
   },
+  */
 }
