@@ -11,18 +11,18 @@ module.exports = {
   get: async () => {
     try {
       const posts = await Post.findAll({
-        attributes: {
-          exclude: ["user_id", "updated_at", "deleted_at"],
-        },
-        include: [
-          {
-            model: User,
-            as: "user",
-            required: true,
-            attributes: {
-              exclude: ["password", "updated_at", "deleted_at"],
-            },
-          },
+        // attributes: {
+        //   exclude: ["user_id", "updated_at", "deleted_at"],
+        // },
+        // include: [
+        //   {
+        //     model: User,
+        //     as: "user",
+        //     required: true,
+        //     attributes: {
+        //       exclude: ["password", "updated_at", "deleted_at"],
+        //     },
+        //   },
           // {
           //   model: Media,
           //   as: "media",
@@ -31,7 +31,7 @@ module.exports = {
           //     exclude: ["updated_at", "deleted_at"],
           //   },
           // },
-        ],
+        // ],
       })
       return posts
     } catch (error) {
